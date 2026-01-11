@@ -1,0 +1,4 @@
+# Optional: PostgreSQL support
+# Only install this if you want to use PostgreSQL instead of SQLite
+# Note: May not work with Python 3.13 yet
+psycopg2-binary==2.9.9
