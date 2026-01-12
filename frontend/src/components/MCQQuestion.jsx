@@ -1,12 +1,25 @@
-import React, { useState } from 'react'
+import React, { useState, useMemo } from 'react'
 
 /**
  * MCQQuestion component displays multiple choice questions.
  * Shows 4 options and handles answer selection.
+ * Options are shuffled randomly to avoid position bias.
  */
 function MCQQuestion({ question, onSubmit }) {
   const [selectedOption, setSelectedOption] = useState(null)
   const [submitted, setSubmitted] = useState(false)
+
+  // Shuffle options once when component mounts (useMemo ensures it only shuffles once per question)
+  const shuffledOptions = useMemo(() => {
+    const options = question.options || []
+    const shuffled = [...options]
+    // Fisher-Yates shuffle algorithm
+    for (let i = shuffled.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]]
+    }
+    return shuffled
+  }, [question.id]) // Re-shuffle only when question changes
 
   const handleSubmit = () => {
     if (selectedOption === null) return
@@ -15,7 +28,7 @@ function MCQQuestion({ question, onSubmit }) {
     onSubmit(selectedOption)
   }
 
-  const options = question.options || []
+  const options = shuffledOptions
 
   return (
     <div className="question-container">

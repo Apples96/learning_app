@@ -22,7 +22,9 @@ function VisualQuestion({ question, onSubmit }) {
         <span className="badge badge-${question.difficulty || 'medium'}">{question.difficulty || 'Medium'}</span>
       </div>
 
-      <h2 className="question-text">{question.question_text}</h2>
+      <div className="question-text-container">
+        <pre className="question-text">{question.question_text}</pre>
+      </div>
 
       <div className="scenario-box">
         <p className="scenario-hint">
@@ -68,12 +70,23 @@ function VisualQuestion({ question, onSubmit }) {
           margin-bottom: 1.5rem;
         }
 
-        .question-text {
-          font-size: 1.5rem;
-          font-weight: 600;
-          color: #1f2937;
+        .question-text-container {
           margin-bottom: 1.5rem;
-          line-height: 1.5;
+        }
+
+        .question-text {
+          font-family: 'Courier New', Courier, monospace;
+          font-size: 1rem;
+          font-weight: 500;
+          color: #1f2937;
+          line-height: 1.6;
+          white-space: pre-wrap;
+          word-wrap: break-word;
+          background-color: #f9fafb;
+          padding: 1.5rem;
+          border-radius: 0.5rem;
+          border: 1px solid #e5e7eb;
+          overflow-x: auto;
         }
 
         .scenario-box {

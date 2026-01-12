@@ -27,13 +27,13 @@ function AnswerFeedback({ feedback, onNext }) {
       {feedback.correct_answer && (
         <div className="feedback-section">
           <h4>Correct Answer:</h4>
-          <p>{feedback.correct_answer}</p>
+          <pre className="feedback-content">{feedback.correct_answer}</pre>
         </div>
       )}
 
       <div className="feedback-section">
         <h4>Explanation:</h4>
-        <p>{feedback.explanation || feedback.feedback}</p>
+        <pre className="feedback-content">{feedback.explanation || feedback.feedback}</pre>
       </div>
 
       <div className="feedback-actions">
@@ -127,6 +127,20 @@ function AnswerFeedback({ feedback, onNext }) {
           color: #4b5563;
           line-height: 1.6;
           margin: 0;
+        }
+
+        .feedback-content {
+          color: #4b5563;
+          line-height: 1.6;
+          margin: 0;
+          font-family: 'Courier New', Courier, monospace;
+          white-space: pre-wrap;
+          word-wrap: break-word;
+          background-color: #f9fafb;
+          padding: 1rem;
+          border-radius: 0.375rem;
+          border: 1px solid #e5e7eb;
+          overflow-x: auto;
         }
 
         .feedback-actions {

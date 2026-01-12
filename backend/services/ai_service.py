@@ -129,7 +129,7 @@ Return ONLY a valid JSON array with this exact structure:
         else:  # visual/practical
             question_format = """
 {
-  "question_text": "Practical scenario or problem to solve",
+  "question_text": "Practical scenario or problem to solve. Include ASCII art, diagrams, matrices, code examples, or visual representations when helpful. Use proper spacing and formatting.",
   "correct_answer": "The solution or approach",
   "explanation": "Step-by-step explanation of the solution"
 }"""
@@ -148,7 +148,8 @@ Requirements:
 - Questions should be clear, unambiguous, and at {difficulty_level} level
 - Test understanding, not just memorization
 - Cover different aspects of the key concepts
-- {"For MCQ: Provide 4 options where wrong answers are plausible but clearly incorrect" if question_type == 'mcq' else ''}
+- {"For MCQ: Provide 4 options where wrong answers are plausible but clearly incorrect. The correct answer should be in different positions (not always first) across questions." if question_type == 'mcq' else ''}
+- {"For Visual/Practical: Include visual representations directly in the question_text when helpful. Use ASCII art for diagrams/networks, properly formatted matrices, code blocks, tables, or flowcharts. Examples: neural network layers as ASCII, matrix multiplication with clear spacing, data structures as diagrams, algorithm steps as flowcharts. Make it visually engaging!" if question_type == 'visual' else ''}
 - Explanations should be educational and help learners understand the concept better
 - {"Options should be distinct and not overlapping" if question_type == 'mcq' else ''}
 
